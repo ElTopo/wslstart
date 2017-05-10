@@ -9,16 +9,17 @@ When it starts, wslstart tries to run /etc/init.d/wslstart.sh script, then gets 
 
 To build:
 ```
-gcc -o wslstart wslstart.c
+make
 ```
 
 To install:
 ```
-strip wslstart
-sudo cp wslstart /usr/sbin/wslstart
-sudo chown root:root /usr/sbin/wslstart
-sudo chmod +s /usr/sbin/wslstart
-sudo ln -sf `readlink -f wslstart.sh` /etc/init.d/wslstart.sh
+make install
+```
+
+To uninstall:
+```
+make uninstall
 ```
 
 To run (from Windows' cmd console):
