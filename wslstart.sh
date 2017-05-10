@@ -2,7 +2,7 @@
 
 # this script (/etc/init.d/wslstart.sh) will be executed by /usr/sbin/wslstart
 # use 
-# ln -sf this_file /etc/init.d/wslstart.sh
+# ln -sf `readlink -f wslstart.sh` /etc/init.d/wslstart.sh
 # to create a softlink
 
 FLAGF=/run/shm/wslstart.flag
