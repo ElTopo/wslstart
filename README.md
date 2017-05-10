@@ -26,4 +26,4 @@ To run (from Windows' cmd console):
 ```
 bash -c "/usr/sbin/wslstart"
 ```
-or run wslstart.cmd 
+or copy wslstart.cmd to Windows' file system and run it from Windows.
