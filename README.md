@@ -14,9 +14,11 @@ gcc -o wslstart wslstart.c
 
 To install:
 ```
+strip wslstart
 sudo cp wslstart /usr/sbin/wslstart
 sudo chown root:root /usr/sbin/wslstart
 sudo chmod +s /usr/sbin/wslstart
+sudo ln -sf `readlink -f wslstart.sh` /etc/init.d/wslstart.sh
 ```
 
 To run (from Windows' cmd console):
