@@ -15,7 +15,7 @@ int main (int argc, char *argv[])
 	system("/etc/init.d/wslstart.sh");
 
 	// if wslstart.sh exits, get into sleep
-	printf("wslstart now is running... press Ctrl+C to quit.\n");
+	printf("wslstart is now running... press Ctrl+C to quit.\n");
 
 	for (;;)
 		sleep(3600);
