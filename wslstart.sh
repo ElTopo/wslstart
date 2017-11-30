@@ -1,5 +1,14 @@
 #!/bin/bash
 
+### BEGIN INIT INFO
+# Provides:		wslstart
+# Required-Start:	$local_fs
+# Required-Stop:	$local_fs
+# Default-Start:	2 3 4 5
+# Default-Stop:
+# Short-Description:	WSL starter
+### END INIT INFO
+
 # this script (/etc/init.d/wslstart.sh) will be executed by /usr/sbin/wslstart
 # use 
 # ln -sf `readlink -f wslstart.sh` /etc/init.d/wslstart.sh
