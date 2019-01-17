@@ -24,6 +24,10 @@ make uninstall
 
 To run (from Windows' cmd console):
 ```
+wsl /usr/sbin/wslstart
+```
+or
+```
 bash -c "/usr/sbin/wslstart"
 ```
 or copy wslstart.cmd to Windows' file system and run it from Windows.
