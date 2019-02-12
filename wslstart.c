@@ -19,9 +19,13 @@ int main (int argc, char *argv[])
 	system("/etc/init.d/wslstart.sh");
 
 	for (int tmout = 10; tmout > 0; tmout--) {
-		printf("\rwslstart will quit in %d second%s...", tmout, (tmout == 1) ? "" : "(s)");
+		if (tmout == 1) {
+			printf("\rwslstart will quit in %d second... \b", tmout);
+		} else {
+			printf("\rwslstart will quit in %d seconds... \b", tmout);
+		}
 		fflush(stdout);
-		sleep(tmout ? 1 : 0);
+		sleep((tmout > 0) ? 1 : 0);
 	}
 	printf("\n");
 }
