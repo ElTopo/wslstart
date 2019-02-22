@@ -1,10 +1,10 @@
 #!/bin/bash
 
-# this script (normally at /etc/init.d/wslstart.sh) will be executed by 
+# this script (normally at /etc/wslstart.sh) will be executed by 
 # /usr/sbin/wslstart as user root
 #
 # use 
-# ln -sf `readlink -f wslstart.sh` /etc/init.d/wslstart.sh
+# ln -sf `readlink -f wslstart.sh` /etc/wslstart.sh
 # to create a softlink
 
 FLAGF=/run/shm/wslstart.flag

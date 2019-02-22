@@ -16,7 +16,7 @@ int main (int argc, char *argv[])
 	}
 
 	// run wslstart.sh script
-	system("/etc/init.d/wslstart.sh");
+	system("/etc/wslstart.sh");
 
 	for (int tmout = 10; tmout > 0; tmout--) {
 		if (tmout == 1) {

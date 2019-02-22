@@ -11,11 +11,11 @@ install: all
 	sudo cp wslstart /usr/sbin/wslstart
 	sudo chown root:root /usr/sbin/wslstart
 	sudo chmod +s /usr/sbin/wslstart
-	sudo ln -sf `readlink -f wslstart.sh` /etc/init.d/wslstart.sh
+	sudo ln -sf `readlink -f wslstart.sh` /etc/wslstart.sh
 	@echo "NOTE: copy wslstart.cmd to your Windows filesystem (/mnt/c/...) "
 	@echo "      so you can run the batch script from Windows."
 
 uninstall: 
 	sudo rm /usr/sbin/wslstart
-	sudo rm /etc/init.d/wslstart.sh
+	sudo rm /etc/wslstart.sh
 

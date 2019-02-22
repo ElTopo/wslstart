@@ -5,8 +5,8 @@ wslstart is a simple Linux process running in WSL (Windows Subsystem for Linux) 
 
 wslstart should be a SUID process so it has root priviledge (which is required by running system tasks and services).
 
-When it starts, wslstart tries to run /etc/init.d/wslstart.sh script (in which user can start tasks they want).
-Eariler versions of WSL kills init and all its child-processes when the last WSL console closes, so wslstart has to stay running to keep sshd alive. However, the recent versions of WSL does not kill init anymore, wslstart can quit after it starts sshd.
+When it starts, wslstart tries to run /etc/wslstart.sh script (in which user can start tasks they want).
+Eariler versions of WSL kills init and all its child-processes when the last WSL console closes, so wslstart has to stay running to keep sshd alive. However, the recent versions of WSL does not kill init anymore, wslstart can quit after it starts wslstart.sh.
 
 To build:
 ```
