@@ -13,7 +13,7 @@ FLAGF=/run/shm/wslstart.flag
 if [ ! -f $FLAGF ] 
 then 
 	# assume this is the first wslstart.sh instance of this WSL session
-	echo "This is WSL session's first wslstart.sh instance."
+	echo "This is WSL session's first wslstart.sh instance, starting..."
 	touch $FLAGF
 
 	# use /run/shm as /tmp so we don't have to clean it up
@@ -21,6 +21,14 @@ then
 
 	# we need this file so logout() does not return error
 	touch /var/run/utmp
+
+	# if user has ~/.wslstart.sh, also run it as the user
+	USER=lxl
+	if [ -x /home/${USER}/.wslstart.sh ]
+	then
+		echo "Running .wslstart.sh of user [${USER}]..."
+		sudo -u ${USER} /home/${USER}/.wslstart.sh
+	fi
 else
 	echo "This is NOT WSL session's first wslstart.sh instance."
 fi
