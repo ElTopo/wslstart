@@ -1,4 +1,6 @@
-# my .wslstart.sh
+#!/bin/bash
+
+# my .wslstart.sh, which is executed by wslstart as normal user
 # this file should be at ~/.wslstart.sh
 
 WSLUSER=$(whoami)
