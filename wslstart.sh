@@ -8,13 +8,21 @@
 # to create a softlink
 
 FLAGF=/run/shm/wslstart.flag
+WSLUSER=
+WSLDEF=/etc/default/wslstart
+
+if [ -r ${WSLDEF} ]
+then
+	# read $WSLUSER from $WSLDEF
+	source ${WSLDEF}
+fi
 
 # /run/shm is tmpfs so it's clean when new WSL session starts
-if [ ! -f $FLAGF ] 
+if [ ! -f ${FLAGF} ] 
 then 
 	# assume this is the first wslstart.sh instance of this WSL session
 	echo "This is WSL session's first wslstart.sh instance, starting..."
-	touch $FLAGF
+	touch ${FLAGF}
 
 	# use /run/shm as /tmp so we don't have to clean it up
 	mount --bind /run/shm /tmp
@@ -23,11 +31,10 @@ then
 	touch /var/run/utmp
 
 	# if user has ~/.wslstart.sh, also run it as the user
-	USER=lxl
-	if [ -x /home/${USER}/.wslstart.sh ]
+	if [ -n "${WSLUSER}" -a -x /home/${WSLUSER}/.wslstart.sh ]
 	then
-		echo "Running .wslstart.sh of user [${USER}]..."
-		sudo -u ${USER} /home/${USER}/.wslstart.sh
+		echo "Running .wslstart.sh of user [${WSLUSER}]..."
+		sudo -u ${WSLUSER} /home/${WSLUSER}/.wslstart.sh
 	fi
 else
 	echo "This is NOT WSL session's first wslstart.sh instance."
