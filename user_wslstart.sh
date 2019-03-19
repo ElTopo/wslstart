@@ -11,4 +11,8 @@ then
 	then
 		cp ~/.vnc/passwd /run/shm/${USER}-vnc/
 	fi
+	if [ -x ~/.vnc/xstartup ]
+	then
+		cp ~/.vnc/xstartup /run/shm/${USER}-vnc/
+	fi
 fi
