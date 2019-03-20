@@ -4,17 +4,18 @@
 # this file should be at ~/.wslstart.sh
 
 WSLUSER=$(whoami)
+VNCUSERDIR=/run/shm/${WSLUSER}-vnc
 
 # for tightvncserver
 if [ -x /usr/bin/tightvncserver ]
 then
-	mkdir -p /run/shm/${WSLUSER}-vnc
+	mkdir -p $VNCUSERDIR
 	if [ -f ~/.vnc/passwd ]
 	then
-		cp ~/.vnc/passwd /run/shm/${WSLUSER}-vnc/
+		cp ~/.vnc/passwd $VNCUSERDIR
 	fi
 	if [ -x ~/.vnc/xstartup ]
 	then
-		cp ~/.vnc/xstartup /run/shm/${WSLUSER}-vnc/
+		cp ~/.vnc/xstartup $VNCUSERDIR
 	fi
 fi
