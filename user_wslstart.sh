@@ -1,21 +1,22 @@
 #!/bin/bash
 
-# my .wslstart.sh, which is executed by wslstart as normal user
-# this file should be at ~/.wslstart.sh
+# my ~/.wslstart.sh, which is executed by wslstart as normal user
+# this file should be soft-linked to ~/.wslstart.sh
 
 WSLUSER=$(whoami)
 VNCUSERDIR=/run/shm/${WSLUSER}-vnc
+DOTVNCDIR=~/.vnc
 
 # for tightvncserver
 if [ -x /usr/bin/tightvncserver ]
 then
 	mkdir -p $VNCUSERDIR
-	if [ -f ~/.vnc/passwd ]
+	if [ -f $DOTVNCDIR/passwd ]
 	then
-		cp ~/.vnc/passwd $VNCUSERDIR
+		cp $DOTVNCDIR/passwd $VNCUSERDIR
 	fi
-	if [ -x ~/.vnc/xstartup ]
+	if [ -x $DOTVNCDIR/xstartup ]
 	then
-		cp ~/.vnc/xstartup $VNCUSERDIR
+		cp $DOTVNCDIR/xstartup $VNCUSERDIR
 	fi
 fi
