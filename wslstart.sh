@@ -30,6 +30,19 @@ then
 	# we need this file so logout() does not return error
 	touch /var/run/utmp
 
+	# run all scripts in /etc/wslstart.d
+	if [ -d /etc/wlstart.d ]
+	then
+		for i in /etc/wslstart.d/*.sh
+		do
+			if [ -x $i ]
+			then
+				$i
+			fi
+		done
+		unset i
+	fi
+
 	# if user has ~/.wslstart.sh, also run it as the user
 	if [ -n "${WSLUSER}" -a -x /home/${WSLUSER}/.wslstart.sh ]
 	then
