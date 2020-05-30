@@ -8,8 +8,10 @@
 # to create a softlink
 
 FLAGF=/run/shm/wslstart.flag
-WSLUSER=
 WSLDEF=/etc/default/wslstart
+
+WSLUSER=
+WSL1STTIME=0
 
 if [ -r ${WSLDEF} ]
 then
@@ -22,6 +24,7 @@ if [ ! -f ${FLAGF} ]
 then 
 	# assume this is the first wslstart.sh instance of this WSL session
 	echo "This is WSL session's first wslstart.sh instance, starting..."
+	WSL1STTIME=1
 	touch ${FLAGF}
 
 	# use /run/shm as /tmp so we don't have to clean it up
@@ -30,8 +33,8 @@ then
 	# we need this file so logout() does not return error
 	touch /var/run/utmp
 
-	# run all scripts in /etc/wslstart.d
-	if [ -d /etc/wlstart.d ]
+	# run all scripts in /etc/wslstart.d as user 'root'
+	if [ -d /etc/wslstart.d ]
 	then
 		for i in /etc/wslstart.d/*.sh
 		do
@@ -43,7 +46,7 @@ then
 		unset i
 	fi
 
-	# if user has ~/.wslstart.sh, also run it as the user
+	# if user has ~/.wslstart.sh, also run it as user ${WSLUSER}
 	if [ -n "${WSLUSER}" -a -x /home/${WSLUSER}/.wslstart.sh ]
 	then
 		echo "Running .wslstart.sh of user [${WSLUSER}]..."
@@ -54,6 +57,7 @@ else
 fi
 
 # start some service(s)
+# always check sshd service because it's crucial
 SSHDPID=$(pgrep sshd)
 if [ -n "$SSHDPID" ]
 then
