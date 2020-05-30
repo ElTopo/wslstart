@@ -11,7 +11,7 @@ FLAGF=/run/shm/wslstart.flag
 WSLDEF=/etc/default/wslstart
 
 WSLUSER=
-WSL1STTIME=0
+WSL1STTIME="false"
 
 if [ -r ${WSLDEF} ]
 then
@@ -24,7 +24,7 @@ if [ ! -f ${FLAGF} ]
 then 
 	# assume this is the first wslstart.sh instance of this WSL session
 	echo "This is WSL session's first wslstart.sh instance, starting..."
-	WSL1STTIME=1
+	WSL1STTIME="true"
 	touch ${FLAGF}
 
 	# use /run/shm as /tmp so we don't have to clean it up
@@ -56,6 +56,7 @@ else
 	echo "This is NOT WSL session's first wslstart.sh instance."
 fi
 
+# this part is always executed everytime wslstart invoked
 # start some service(s)
 # always check sshd service because it's crucial
 SSHDPID=$(pgrep sshd)
