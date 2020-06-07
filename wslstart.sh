@@ -66,4 +66,12 @@ then
 else
 	service ssh restart
 fi
+# always check cron service because it's crucial
+CRONPID=$(pgrep cron)
+if [ -n "$CRONPID" ]
+then
+	echo "cron is already running" 
+else
+	service cron restart
+fi
 
