@@ -27,6 +27,9 @@ then
 	WSL1STTIME="true"
 	touch ${FLAGF}
 
+	# clear /tmp
+	cd /tmp && rm -rf `ls -Ab`
+
 	# use /run/shm as /tmp so we don't have to clean it up
 	mount --bind /run/shm /tmp
 
