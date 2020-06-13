@@ -77,4 +77,8 @@ then
 else
 	service cron restart
 fi
+# TODO: more crucial services...
+# syslogd?
+# monit?
+# zerotier client?
 
