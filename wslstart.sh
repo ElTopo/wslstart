@@ -49,7 +49,7 @@ then
 		unset i
 	fi
 
-	# if user has ~/.wslstart.sh, also run it as user ${WSLUSER}
+	# if ${WSLUSER} has ~/.wslstart.sh, also run it as user ${WSLUSER}
 	if [ -n "${WSLUSER}" -a -x /home/${WSLUSER}/.wslstart.sh ]
 	then
 		echo "Running .wslstart.sh of user [${WSLUSER}]..."
