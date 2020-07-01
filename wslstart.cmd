@@ -1,7 +1,7 @@
 @echo off
 
 @rem use smaller window
-@mode con:cols=66 lines=6
+@mode con:cols=66 lines=10
 @set PROMPT=# 
 
 @rem old version: use bash.exe
