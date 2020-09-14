@@ -32,3 +32,5 @@ or
 bash -c "/usr/sbin/wslstart"
 ```
 or copy wslstart.cmd to Windows' file system and run it from Windows.
+
+To automatically run wslstart at Windows 10's boottime or user's log on time, the easiest way is using "Task Scheduler" to create a basic task to run wslstart.cmd. Note that wslstart.cmd can be started at anytime, it won't harm if it's started several times.
