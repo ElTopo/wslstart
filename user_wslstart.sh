@@ -4,7 +4,7 @@
 # this file should be soft-linked to ~/.wslstart.sh
 
 # get WSL's IP(s)
-WSLIP_FILE="/mnt/c/Users/lxl/wslip.txt"
+#WSLIP_FILE="/mnt/c/Users/lxl/wslip.txt"
 
 # get WSL's all IPs
 IPS=$(hostname -I)
@@ -14,7 +14,9 @@ if [ -z "$IPS" ] ; then
 else
 	echo "WSL's IP(s): $IPS."
 fi
-echo "$IPS" > ${WSLIP_FILE}
+if [ -n "${WSLIP_FILE}" ] ; then
+	echo "$IPS" > ${WSLIP_FILE}
+fi
 
 # for tightvncserver
 WSLUSER=$(whoami)
