@@ -3,8 +3,11 @@
 # my ~/.wslstart.sh, which is executed by wslstart as normal user
 # this file should be soft-linked to ~/.wslstart.sh
 
+WSLUSER=$(whoami)
+
 # get WSL's IP(s)
-#WSLIP_FILE="/mnt/c/Users/lxl/wslip.txt"
+# this file contains WSL's internal IP (accessible from Windows 10 system)
+WSLIP_FILE="/mnt/c/Users/lxl/wslip.txt"
 
 # get WSL's all IPs
 IPS=$(hostname -I)
@@ -19,7 +22,6 @@ if [ -n "${WSLIP_FILE}" ] ; then
 fi
 
 # for tightvncserver
-WSLUSER=$(whoami)
 VNCUSERDIR=/run/shm/${WSLUSER}-vnc
 DOTVNCDIR=~/.vnc
 
