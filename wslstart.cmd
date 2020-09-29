@@ -1,12 +1,39 @@
 @echo off
+goto :init
 
-@rem use smaller window
-@mode con:cols=66 lines=10
-@set PROMPT=# 
+:usage
+  @echo Usage: wslstart.cmd [reboot^|shutdown^|help]
+  @echo          reboot: shutdown the default WSL session before start it
+  @echo          shutdown: shutdown the default WSL session and quit
+  @echo          help: print usage and quit
+  @echo          no parameters: just start the default WSL session normally
+  @goto :exit
 
-@rem old version: use bash.exe
-@rem bash -c "/usr/sbin/wslstart"
+:shutdown 
+  @rem shutdown and quit
+  @echo Shutting down WSL...
+  @wsl --shutdown
+  @goto :exit
+  
+:reboot
+  @rem shutdown and continue
+  @echo Rebooting WSL...
+  @wsl --shutdown
+  @goto :start
 
-@rem new version: use wsl.exe
-@wsl /usr/sbin/wslstart
+:init
+  @if "%1"=="help" goto :usage
+  @if "%1"=="shutdown" goto :shutdown
+  @if "%1"=="reboot" goto :reboot
+  @if "%1"=="" goto :start
+  @goto :usage
 
+:start
+  @rem use smaller window
+  @mode con:cols=66 lines=10
+  @set PROMPT=#
+
+  @rem execute wslstart, which executes /etc/wslstart.sh
+  @wsl /usr/sbin/wslstart
+
+:exit
