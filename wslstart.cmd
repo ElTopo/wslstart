@@ -33,7 +33,12 @@ goto :init
   @mode con:cols=66 lines=10
   @set PROMPT=#
 
+  @rem start putty pageant
+  @set PUTTYDIR=%HOMEDRIVE%%HOMEPATH%\WinUtils\puttyall
+  @set KEYDIR=%HOMEDRIVE%%HOMEPATH%\WinUtils\puttyall\Keys
+  @start /b %PUTTYDIR%\PAGEANT.EXE %KEYDIR%\mykey.ppk
+
   @rem execute wslstart, which executes /etc/wslstart.sh
   @wsl /usr/sbin/wslstart
-
+  
 :exit
