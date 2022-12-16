@@ -8,6 +8,10 @@ wslstart should be a SUID process so it has root priviledge (which is required b
 When it starts, wslstart tries to run /etc/wslstart.sh script (in which user can start tasks they want) and optionally ~user/.wslstart.sh script (define $WSLUSER in /etc/default/wslstart).
 Eariler versions of WSL kills init and all its child-processes when the last WSL console closes, so wslstart has to stay running to keep sshd alive. However, the recent versions of WSL does not kill init anymore, wslstart can quit after it starts wslstart.sh.
 
+NOTE: For Windows 11 and Server 2022, wslstart can be invoked by wsl.conf/[boot]/command
+      so wslstart does not need to be owned by root. Unfortunately, for Windows 10 (which is 
+	  what I am running), wslstart still needs +s, and is still useful.
+
 To build:
 ```
 make
