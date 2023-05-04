@@ -27,11 +27,10 @@ then
 	WSL1STTIME="true"
 	touch ${FLAGF}
 
-	# clear /tmp
-	cd /tmp && rm -rf `ls -Ab`
-
-	# use /run/shm as /tmp so we don't have to clean it up
-	mount --bind /run/shm /tmp
+	# It's also a good idea to use /run/shm as /tmp, do this once:
+	#	  sudo mv /tmp /tmp0
+	#	  sudo ln -sf /run/shm /tmp
+	#	  reboot WSL
 
 	# we need this file so logout() does not return error
 	touch /var/run/utmp
