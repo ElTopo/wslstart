@@ -13,12 +13,14 @@ goto :init
   @rem shutdown and quit
   @echo Shutting down WSL...
   @wsl --shutdown
+  @timeout /nobreak 8
   @goto :exit
   
 :reboot
   @rem shutdown and continue
   @echo Rebooting WSL...
   @wsl --shutdown
+  @timeout /nobreak 8
   @goto :start
 
 :init
