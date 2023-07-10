@@ -27,9 +27,12 @@ then
 	WSL1STTIME="true"
 	touch ${FLAGF}
 
-	# It's also a good idea to use /run/shm as /tmp, do this once:
+	# It's also a good idea to use /run/shm as /tmp and /var/tmp, do this once:
 	#	  sudo mv /tmp /tmp0
+	#	  sudo mv /var/tmp /var/tmp0
+	#
 	#	  sudo ln -sf /run/shm /tmp
+	#	  sudo ln -sf /run/shm /var/tmp
 	#	  reboot WSL
 
 	# we need this file so logout() does not return error
