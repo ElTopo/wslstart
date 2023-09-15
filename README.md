@@ -1,7 +1,10 @@
 # wslstart
-Start WSL (Windows Subsystem for Linux)
+
+**Start WSL (Windows Subsystem for Linux)**
 
 wslstart is a simple Linux process running in WSL (Windows Subsystem for Linux) for automatically starting some tasks and services.
+
+**NOTE: wslstart was designed for Windows 10's WSL2 (that did not support systemd), for Windows 11's WSL2, it's better that you just enable systemd and use lxlstartup.cmd instead.**
 
 wslstart should be a SUID process so it has root priviledge (which is required by running system tasks and services).
 
