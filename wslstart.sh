@@ -1,5 +1,8 @@
 #!/bin/bash
-
+#
+# NOTE: wslstart is for Windows 10's WSL2
+#       for Windows 11, enable systemd is a better solution.
+#
 # this script (normally at /etc/wslstart.sh) will be executed by 
 # /usr/sbin/wslstart as user root
 #
