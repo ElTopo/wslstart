@@ -15,7 +15,8 @@
 
 @rem trigger wsl using execmd of nircmd (https://www.nirsoft.net/utils/nircmd.html)
 @rem   "nircmd execmd" runs a cmd with hidden cmd window
-@rem   "wsl ~" starts WSL session and steys there to avoid WSL's automatic stop
+@rem   "wsl ~" starts WSL session and stays there to avoid WSL's automatic stop
 @set NIRCMD=%USERPROFILE%\WinUtils\nircmd\NirCmd.exe
 @start /b %NIRCMD% execmd wsl ~
 
+@rem more tasks to start at login...
